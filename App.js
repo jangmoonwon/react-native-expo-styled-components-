@@ -14,13 +14,18 @@ export default function App() {
     ]);
   };
 
+  const onRemove = (id) => (e) => {
+    e.preventDefault();
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
   return (
     <Container>
       <StatusBar style="auto" />
       <HeaderTitle>TodoList</HeaderTitle>
       <CardContainer>
-        <TodoList todos={todos}/>
-        <TodoInsert onAddTodo={addTodo}/>
+        <TodoList todos={todos} onRemove={onRemove} />
+        <TodoInsert onAddTodo={addTodo} />
       </CardContainer>
     </Container>
   );

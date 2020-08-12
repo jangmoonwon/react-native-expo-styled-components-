@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Text } from "react-native";
 import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
 
-export default function TodoListItem({ id, textValue, checked }) {
+export default function TodoListItem({ id, textValue, checked, onRemove }) {
   return (
     <Container>
       <CircleBtn>
@@ -11,7 +11,7 @@ export default function TodoListItem({ id, textValue, checked }) {
       </CircleBtn>
       <ListItemText>{textValue}</ListItemText>
       <DeleteBtn>
-        <Text>
+        <Text onPress={onRemove(id)}>
           <AntDesign name="minuscircleo" size={35} color="#ff7272" />
         </Text>
       </DeleteBtn>
