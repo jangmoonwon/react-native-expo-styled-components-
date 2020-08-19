@@ -15,8 +15,15 @@ export default function App() {
   };
 
   const onRemove = (id) => (e) => {
-    e.preventDefault();
     setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  const onToggle = (id) => (e) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, checked: !todo.checked } : todo
+      )
+    );
   };
 
   return (
@@ -24,7 +31,7 @@ export default function App() {
       <StatusBar style="auto" />
       <HeaderTitle>TodoList</HeaderTitle>
       <CardContainer>
-        <TodoList todos={todos} onRemove={onRemove} />
+        <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle}/>
         <TodoInsert onAddTodo={addTodo} />
       </CardContainer>
     </Container>
